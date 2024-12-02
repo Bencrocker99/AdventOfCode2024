@@ -18,7 +18,7 @@ def get_day_1_solutions(file: list[str]) -> tuple[int, int]:
     return total_distance, similarity_score
 
 if __name__ == "__main__":
-    file = Path("Day_1/input.txt").read_text().splitlines()
+    file = Path("Advent Of Code 2024/Day_1/input.txt").read_text().splitlines()
     solution_1, solution_2 = get_day_1_solutions(file)
     print(f"Total Distance: {solution_1}")
     print(f"Similarity Score: {solution_2}")
