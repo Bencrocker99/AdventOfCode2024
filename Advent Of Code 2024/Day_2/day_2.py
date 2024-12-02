@@ -6,15 +6,15 @@ def get_day_2_solutions(file: list[str]) -> tuple[int, int]:
     number_of_safe_reports, number_of_safe_reports_with_dampener = 0, 0
     for line in file:
         report: list[int] = [int(x) for x in line.split()]
-        if _is_report_safe(report):
+        if _report_is_safe(report):
             number_of_safe_reports += 1
-        if _is_report_safe_with_dampener(report):
+        if _report_is_safe_with_dampener(report):
             number_of_safe_reports_with_dampener += 1
 
     return number_of_safe_reports, number_of_safe_reports_with_dampener
 
 
-def _is_report_safe(report) -> bool:
+def _report_is_safe(report) -> bool:
         is_ascending: bool = report[0] < report[1]
         for i in range(len(report) - 1):
             if is_ascending and report[i] >= report[i + 1] or report[i + 1] > report[i] + MAXIMUM_INCREMENT_VALUE:
@@ -23,11 +23,11 @@ def _is_report_safe(report) -> bool:
                 return False
         return True
 
-def _is_report_safe_with_dampener(report) -> bool:
+def _report_is_safe_with_dampener(report) -> bool:
     for i in range(len(report)):
         report_duplicate = report.copy()
         del report_duplicate[i]
-        if _is_report_safe(report_duplicate):
+        if _report_is_safe(report_duplicate):
             return True
     return False
 
